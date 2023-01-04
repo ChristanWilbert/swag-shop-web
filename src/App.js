@@ -21,7 +21,7 @@ class App extends Component {
   productList=()=>{
     const list =this.state.products.map((product)=>
       <div className='col-sm-2' key={product._id}>
-        <Product className="col-sm-4" title={product.title} price={product.price} imgUrl={product.imgUrl} />
+        <Product className="col-sm-4" product={product}/>
       </div>
     );
     return (list);
@@ -30,7 +30,7 @@ class App extends Component {
   loadData=()=>{
     var self = this;
     http.getProducts().then((data)=>{
-      self.setState({products:data})},err=>{});
+      self.setState({products:data})},err=>{console.log(err)});
   }
 
   render(){
